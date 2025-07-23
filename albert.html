@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>System Core Terminal</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      margin: 0;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+
+    const fakeLogs = [
+      "[sys-core] Initializing memory block @ 0x0001F8A4",
+      "[AI-Core] Encrypting schema set 4/7",
+      "[kernel] Buffer overflow bypass route verified",
+      "[hash-sim] Generating entropy table... done",
+      "[vm-seq] Deep chain validation passed",
+      "[crypto-daemon] Shuffling seed vaults...",
+      "[sec-log] Injecting sentinel vectors...",
+      "[core-loop] Executing phase loop stack (level 9)",
+      "[taskmgr] Resolving parallel streams...",
+      "[system-call] Deep structure thread spawned",
+      "[hex-gen] Dump: 4e6f7743616c6c546865546f776572",
+      "[debug] Runtime UUID: 73a9-c04f-9b2e-ff2c",
+      "[entropy] → ∑ = 3.674 x 10^38",
+      "[sys-heap] [Warning] Ghost address collision resolved",
+      "[modx-loader] Authenticating layers..."
+    ];
+
+    const secretPayload = "84nFr3!Z4gQX97kLm@PP9V3n" +
+      "N7#vRq$3WpJ8&ZxLm^T!64GbKsFc@YdV" +
+      "Xm#9YpT&JqL7W!zRs2$DvBh@CFNG^kl8" +
+      "Bv@Jh6Lm9&DZQcF!PxYeRs#WtN4gKzT^" +
+      "2tB7Xp#MaPd1@kM$4WcZf!vQ";
+
+    const extraFake = [
+      "[stream] Hash dump: 9f81a0c95b3d2aa96ef1234d8bc7e1",
+      "[cache-core] Fragmented node linked",
+      "[quantum] Reading spinlock trace: ✔",
+      "[decoder] ↳ Reticulating splines...",
+      "[seq-chain] Fusion level: MAX_RECUR",
+      "[vault] Sealing Phase-5 containers",
+      "[AUTH] Passive handshake verified",
+      "[TRACE] 52% pattern deviation accepted",
+      "[AES-Block] ShiftRound=11, FinalKey→ ready"
+    ];
+
+    const allLines = [...fakeLogs, "[payload] >>>", secretPayload, "<<< [end]", ...extraFake];
+
+    let i = 0;
+    function printNextLine() {
+      if (i < allLines.length) {
+        terminal.innerHTML += allLines[i] + "\n";
+        i++;
+        setTimeout(printNextLine, 150 + Math.random() * 100);
+      }
+    }
+
+    printNextLine();
+  </script>
+</body>
+</html>
